@@ -1,5 +1,6 @@
 # app/api/endpoints.py
 
+import logging
 from datetime import timedelta
 from typing import Optional
 
@@ -12,6 +13,7 @@ from app.auth import auth
 from .. import crud, models, schemas
 from ..database import get_db
 
+logger = logging.getLogger("default")
 router = APIRouter()
 
 
@@ -49,7 +51,13 @@ def get_car_info(model: str, db: Session = Depends(get_db)):
 
 @router.post("/car_info", response_model=schemas.Car)
 def create_car(car: schemas.CarCreate, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):
-  return crud.create_car_query(db=db, car=car)
+  try:
+    car_obj = crud.create_car_query(db=db, car=car)
+    logger.info(f"USER: {current_user.username} created car with ID: {car_obj.id}")
+    return car_obj
+  except Exception as e:
+    logger.error(f"Unexpected error: {e}", exc_info=True)
+    raise HTTPException(status_code=500, detail="Internal Server Error")
 
 
 @router.put("/car_info/{car_id}", response_model=schemas.Car)

@@ -16,6 +16,7 @@ python-dotenv = "^1.0.1"
 python-jose = "^3.3.0"
 passlib = "^1.7.4"
 bcrypt = "^4.2.0"
+colorlog = "^6.8.2"
 
 
 [build-system]
