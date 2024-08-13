@@ -1,0 +1,18 @@
+id,mark,model,year,body_type,engine_volume,horsepower
+1,Toyota,Corolla,2020,Sedan,1.8,140
+2,BMW,3 Series,2019,Sedan,2.0,190
+3,Audi,A4,2021,Sedan,2.0,200
+4,Ford,Mustang,2022,Coupe,5.0,450
+5,Honda,Civic,2020,Sedan,1.5,170
+6,Mercedes,C-Class,2022,Sedan,2.0,180
+7,Volkswagen,Golf,2021,Hatchback,1.4,150
+8,Tesla,Model S,2023,Sedan,Electric,600
+9,Subaru,Outback,2020,SUV,2.5,182
+10,Chevrolet,Camaro,2022,Coupe,6.2,455
+11,Nissan,Altima,2019,Sedan,2.5,188
+12,Hyundai,Sonata,2021,Sedan,2.5,191
+13,Kia,Seltos,2022,SUV,2.0,147
+14,Jaguar,F-Type,2023,Convertible,5.0,575
+15,Porsche,911,2020,Coupe,3.0,443
+16,Mazda,CX-5,2021,SUV,2.5,187
+17,Lexus,RX,2019,SUV,3.5,

@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class CarBase(BaseModel):
-  make: str
+  mark: str
   model: str
   year: int
   body_type: Optional[str] = None
