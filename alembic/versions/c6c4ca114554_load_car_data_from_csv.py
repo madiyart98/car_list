@@ -32,7 +32,6 @@ def load_csv_data(session: Session, file_path: str):
       horsepower = int(row['horsepower']) if row['horsepower'] else None
 
       car = Car(
-          id=int(row['id']),
           mark=row['mark'],
           model=row['model'],
           year=int(row['year']),
