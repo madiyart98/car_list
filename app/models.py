@@ -1,5 +1,6 @@
 # models.py
-from sqlalchemy import Boolean, Column, Float, Integer, String
+from sqlalchemy import (Boolean, Column, Float, Integer, String,
+                        UniqueConstraint)
 
 from app.database import Base
 
@@ -14,6 +15,9 @@ class Car(Base):
   body_type = Column(String)
   engine_volume = Column(Float)
   horsepower = Column(Integer)
+  __table_args__ = (
+      UniqueConstraint('mark', 'model', 'year', name='uix_mark_model'),
+  )
 
 
 class User(Base):
