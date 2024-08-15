@@ -26,9 +26,9 @@ RUN poetry config virtualenvs.create false \
 
 # Copy the rest of the application
 COPY . /app
-
+RUN chmod +x ./entrypoint.sh
 # Expose the application port
 EXPOSE 8000
 
 # Run the FastAPI application with Uvicorn
-CMD ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
