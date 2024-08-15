@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class Token(BaseModel):
@@ -25,8 +25,8 @@ class User(UserBase):
   id: int
   is_active: bool
 
-  class Config:
-    orm_mode = True
+  # Use ConfigDict and set from_attributes for ORM compatibility
+  model_config = ConfigDict(from_attributes=True)
 
 
 class CarBase(BaseModel):
@@ -45,5 +45,5 @@ class CarCreate(CarBase):
 class Car(CarBase):
   id: int
 
-  class Config:
-    orm_mode = True
+  # Use ConfigDict and set from_attributes for ORM compatibility
+  model_config = ConfigDict(from_attributes=True)
