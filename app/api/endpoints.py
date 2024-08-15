@@ -61,10 +61,12 @@ def create_car(car: schemas.CarCreate, db: Session = Depends(get_db), current_us
 
 
 @router.put("/car_info/{car_id}", response_model=schemas.Car)
-def update_car(car_id: int, car: schemas.CarCreate, db: Session = Depends(get_db)):
+def update_car(car_id: int, car: schemas.CarCreate, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):
   updated_car = crud.update_car_query(db=db, car_id=car_id, car=car)
   if not updated_car:
     raise HTTPException(status_code=404, detail="Car not found")
+
+  logger.info(f"USER: {current_user.username} updated car with ID: {updated_car.id}")
   return updated_car
 
 
