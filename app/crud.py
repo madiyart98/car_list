@@ -46,7 +46,7 @@ def get_cars_by_filters_query(db: Session, year: int | None = None, body_type: s
 
 
 def create_car_query(db: Session, car: schemas.CarCreate):
-  db_car = models.Car(**car.dict())
+  db_car = models.Car(**car.model_dump())
   db.add(db_car)
   db.commit()
   db.refresh(db_car)
@@ -56,7 +56,7 @@ def create_car_query(db: Session, car: schemas.CarCreate):
 def update_car_query(db: Session, car_id: int, car: schemas.CarCreate):
   db_car = db.query(models.Car).filter(models.Car.id == car_id).first()
   if db_car:
-    for key, value in car.dict().items():
+    for key, value in car.model_dump().items():
       setattr(db_car, key, value)
     db.commit()
     db.refresh(db_car)
